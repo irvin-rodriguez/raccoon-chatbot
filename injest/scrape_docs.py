@@ -14,7 +14,7 @@ BASE_URL = "https://hugary1995.github.io/raccoon/index.html"
 OUTPUT_DIR = "./data/html_pages"
 
 
-def is_internal_link(href):
+def is_internal_link(href: str) -> bool:
     """
     Checks whether a given href link is:
     - not None or empty
@@ -25,7 +25,7 @@ def is_internal_link(href):
             and "hugary1995.github.io/raccoon" in href)
 
 
-def get_all_links(base_url):
+def get_all_links(base_url: str) -> list[str]:
     """
     Crawls the base URL and collects all internal documentation links.
 
@@ -84,7 +84,7 @@ def get_all_links(base_url):
     return sorted(all_links)
 
 
-def save_html_page(url, output_dir):
+def save_html_page(url: str, output_dir: str):
     """
     Downloads the HTML content of a given URL and saves it to disk.
 
