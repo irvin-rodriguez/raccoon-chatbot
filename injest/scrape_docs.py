@@ -1,6 +1,6 @@
 """
 scrape_docs.py
-Will scrape RACOON website for its documentation.
+Will scrape RACOON website for its documentation and save raw HTML files.
 """
 
 import os
@@ -104,6 +104,10 @@ def save_html_page(url, output_dir):
 
         parsed_url = urlparse(url)
         relative_path = parsed_url.path.lstrip("/")
+        
+        if relative_path.startswith("raccoon/"):
+            relative_path = relative_path[len("raccoon/"):]
+
         filepath = os.path.join(output_dir, relative_path)
 
         os.makedirs(os.path.dirname(filepath), exist_ok=True)
