@@ -1,6 +1,6 @@
 """
 clean_docs.py
-Will clean raw HTML files and put them as RAG-ready text.
+Will clean raw HTML files and put them in markdown ready for RAG.
 """
 
 import os
@@ -31,9 +31,11 @@ def extract_clean_text(html: str) -> str:
 
     # We want to preserve codeblocks so find <pre><code>
     for pre in main.find_all("pre"):
-        code = pre.get_text(strip=False)  # preserve the indentation
-        # Wrap that code block into markdown keeping the whitespace for indentation
-        code_block = f"\n```text\n{code.rstrip()}\n```\n"
+        code_tag = pre.code if pre.code else pre
+        code_raw = code_tag.string or code_tag.get_text(strip=False)
+        
+        # make sure to not strip the white space
+        code_block = f"\n```text\n{code_raw.rstrip()}\n```\n"
         pre.replace_with(code_block)
 
     # Now extract the text
@@ -41,7 +43,7 @@ def extract_clean_text(html: str) -> str:
 
     # Strip excessive blank lines
     cleaned_lines = [
-        line.strip() for line in text.splitlines() if line.strip()
+        line.rstrip() for line in text.splitlines() if line.strip()
     ]
     return "\n".join(cleaned_lines)
 
@@ -67,7 +69,7 @@ def clean_all_html(input_dir: str, output_dir: str):
                 # Compute output path, preserving folder structure
                 relative_path = os.path.relpath(input_path, input_dir)
                 output_path = os.path.join(output_dir, relative_path)
-                output_path = output_path.replace(".html", ".txt")
+                output_path = output_path.replace(".html", ".md")
 
                 # Make sure the output directory exists
                 os.makedirs(os.path.dirname(output_path), exist_ok=True)
