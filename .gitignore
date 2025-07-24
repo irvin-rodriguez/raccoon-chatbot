@@ -1,1 +1,4 @@
 .env
+
+data/html_pages/*
+!data/html_pages/.gitkeep
