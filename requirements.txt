@@ -1,11 +1,12 @@
+python-dotenv
+requests
+tqdm
+beautifulsoup4
 langchain
+langchain-openai
 langchain-pinecone
-lancgchain-openai
-openai              # OpenAI's LLM models
-beautifulsoup4      # for parsing HTML
-requests            # to send HTTP requests to web pages
-pinecone            # vector database to store and search embeddings
-tqdm                # progress bar
-python-dotenv       # environment variables (store API keys)
-streamlit           # frontend app
-yapf                # formatting
+langchain-core
+langchain-community
+langgraph
+pinecone-client
+streamlit

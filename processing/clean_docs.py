@@ -7,7 +7,7 @@ import os
 from bs4 import BeautifulSoup
 
 INPUT_DIR = "./data/html_pages"
-OUTPUT_DIR = "./data/clean_text_pages"
+OUTPUT_DIR = "./data/cleaned_md_pages"
 
 
 def extract_clean_text(html: str) -> str:

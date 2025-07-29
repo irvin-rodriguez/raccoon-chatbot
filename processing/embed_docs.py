@@ -51,7 +51,7 @@ def load_and_chunk(folder_path: str) -> list[Document]:
     return all_chunks
 
 
-docs = load_and_chunk("./data/clean_text_pages")
+docs = load_and_chunk("./data/clean_md_pages")
 print(f"Loaded and chunked {len(docs)} document chunks.")
 
 

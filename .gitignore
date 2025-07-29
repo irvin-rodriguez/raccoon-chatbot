@@ -3,5 +3,5 @@
 data/html_pages/*
 !data/html_pages/.gitkeep
 
-data/clean_text_pages/*
-!data/clean_text_pages/.gitkeep
+data/clean_md_pages/*
+!data/clean_md_pages/.gitkeep
